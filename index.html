@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trail Running Planner App</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+    <header>
+        <nav class="nav-bar">
+            <ul class="nav-items">
+                <li><a href="#">Home</a></li>
+                <li><a href="#name">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="app-details">
+            <p>The trail running planner helps you plan your runs easily. Get current and future weather 
+            forcasts and find running trails near you. Simply enter your location to get started. </p>
+                </section>
+        <form class="search-form">
+            <label for="search" id="city-state">Enter your city and state:</label>
+            <input type="text" id="search" placeholder="New York, New York">
+            <button type="submit" id="search-button">Search</button>
+        </form>
+        <div class="results-container">
+        <section class="js-weather-results"></section>
+        <section class="js-trail-results"></section>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-container">
+        <section class="contact">
+            <h2>Contact:</h2>
+            <address class="email"><a href="mailto:neelyab@vcu.edu">neelyab@vcu.edu</a></address>
+        </section>
+        <div class="form-container">
+        <form class="signup-form">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name">
+            <label for="email-address">Email Address:</label>
+            <input type="text" name="email-address" id="email">
+            <button type="submit" id="email-form-submit">Submit</button>
+        </form>
+        </div>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="index.js"></script>   
+</body>
+</html>
