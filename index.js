@@ -31,7 +31,7 @@ function getTrails() {
 }
 
 function getWeather() {
-/* https://weather.ls.hereapi.com/weather/1.0/report.json?apiKey=&product=observation&latitude=41.83&longitude=-87.68 */
+/* url https://weather.ls.hereapi.com/weather/1.0/report.json?apiKey=&product=observation&latitude=41.83&longitude=-87.68 */
 
 }
 
