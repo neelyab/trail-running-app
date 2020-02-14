@@ -23,16 +23,20 @@ function geocodeAddress(address) {
     let coordinates;
  fetch(url)
     .then (response=> response.json())
-    .then (responseJson=> getTrails(responseJson.results[0].geometry.location))
+    .then (responseJson=>latLong(responseJson.results[0].geometry.location))
     .catch (error => console.log(error.message));
     
 }
+function latLong(coordinates) {
+    let latitude= coordinates.lat;
+    let longitude= coordinates.lng;
+    getTrails(latitude, longitude);
+    getWeather(latitude, longitude);
+}
 
-function getTrails(coordinates) {
- console.log(coordinates);
- /* let latLong = Object.keys(coordinates).map(key=>`${key}=${coordinates[key]}`) */
- let latitude= coordinates.lat;
- let longitude= coordinates.lng;
+function getTrails(latitude, longitude) {
+ console.log(latitude, longitude);
+
  let trailUrl = `https://www.trailrunproject.com/data/get-trails?lat=${latitude}&lon=${longitude}&maxDistance=30&maxResults=20&key=${trailKey}`;
 
  fetch (trailUrl)
@@ -56,7 +60,7 @@ function displayTrailResults(trailResponseJson) {
 }
 
 function getWeather() {
-/* url https://weather.ls.hereapi.com/weather/1.0/report.json?apiKey=&product=observation&latitude=41.83&longitude=-87.68 */
+    let weatherUrl =`https://weather.ls.hereapi.com/weather/1.0/report.json?apiKey=${weatherKey}&product=observation&latitude=${latitude}&longitude=${longitude};`
 
 }
 

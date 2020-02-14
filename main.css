@@ -78,6 +78,14 @@ main {
     margin-top: 10px;
 }
 
+.js-trail {
+    height: 500px;
+    overflow: scroll;
+}
+.js-weather {
+    height: 500px;
+    overflow: scroll;
+}
 /* --------- FOOTER STYLES ------- */
 footer {
     background-color: darkgrey;
@@ -115,11 +123,18 @@ footer {
     width: 75%;
 }
 
+
 @media only screen and (min-width: 968px) {
 
 .nav-items {
     margin-right: 100px;
     justify-content: flex-end;
+}
+.js-trail {
+    width: 40%;
+}
+.js-weather {
+    width: 40%;
 }
 .footer-container {
     flex-direction: row;
