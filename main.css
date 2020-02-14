@@ -77,7 +77,7 @@ main {
     border-radius: 10px;
     margin-top: 10px;
 }
-
+/* -----  STYLES FOR TRAIL AND WEATHER RESULTS ---- */
 .js-trail {
     height: 500px;
     overflow: scroll;
@@ -86,10 +86,31 @@ main {
     height: 500px;
     overflow: scroll;
 }
+.js-weather-results, .js-current-weather, .js-trail-results {
+    padding: 10px 20px;
+    list-style: none;
+}
+
+.hidden {
+    display: none;
+}
+.js-weather-results li {
+    padding-bottom: 5px;
+}
+.js-weather-results h2 {
+    padding: 10px 0 10px 0;
+}
+.js-weather h2 {
+    padding: 10px 0 10px 0;
+}
+.results-container {
+    margin-bottom: 50px;
+}
 /* --------- FOOTER STYLES ------- */
 footer {
     background-color: darkgrey;
     padding: 30px 0;
+    margin-top: 40px;
 }
 .footer-container {
     display: flex;
@@ -130,8 +151,15 @@ footer {
     margin-right: 100px;
     justify-content: flex-end;
 }
+.results-container {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    justify-content: center;
+}
 .js-trail {
     width: 40%;
+    margin-left: 40px;
 }
 .js-weather {
     width: 40%;
