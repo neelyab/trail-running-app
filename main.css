@@ -13,6 +13,9 @@ html {
 a {
     text-decoration: none;
 }
+button:hover {
+    cursor: pointer;
+}
 
 /* ------------ HEADER STYLES --------- */
 header {
@@ -34,6 +37,10 @@ nav {
 .nav-items>li {
     padding-left: 20px;
     list-style: none;
+}
+.name {
+    font-weight: bold;
+    font-size: 1.4em;
 }
 /* ---------- BODY STYLES ---------*/
 body {
@@ -61,8 +68,9 @@ main {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 50x 100px;
+    padding: 20x 0;
     margin-bottom: 100px;
+    min-height: 300px;
 }
 #city-state {
     padding-bottom: 10px;
@@ -79,12 +87,11 @@ main {
 }
 /* -----  STYLES FOR TRAIL AND WEATHER RESULTS ---- */
 .js-trail {
-    height: 500px;
-    overflow: scroll;
+    background-color: lightgray;
 }
 .js-weather {
-    height: 500px;
-    overflow: scroll;
+  
+    background-color: lightgray;
 }
 .js-weather-results, .js-current-weather, .js-trail-results {
     padding: 10px 20px;
@@ -133,6 +140,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     width: 70%;
 }
 .signup-form {
@@ -149,7 +157,7 @@ footer {
 
 .nav-items {
     margin-right: 100px;
-    justify-content: flex-end;
+    justify-content: space-around;
 }
 .results-container {
     display: flex;
@@ -160,9 +168,13 @@ footer {
 .js-trail {
     width: 40%;
     margin-left: 40px;
+    height: 500px;
+    overflow: scroll;
 }
 .js-weather {
     width: 40%;
+    height: 500px;
+    overflow: scroll;
 }
 .footer-container {
     flex-direction: row;

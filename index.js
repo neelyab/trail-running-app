@@ -24,9 +24,13 @@ function geocodeAddress(address) {
     let url=`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${geocodeKey}`;
 
  fetch(url)
-    .then (response=> response.json())
+    .then (response=> {
+        if(response.ok) {
+        return response.json();
+        } throw new error(response.statusText);
+        })
     .then (responseJson=>latLong(responseJson.results[0].geometry.location))
-    .catch (error => console.log(error.message));
+    .catch (error => $('.search-form').append(`<p>something went wrong, please try again.</p>`));
     
 }
 /* retrieves coordinates and assigns them to variables to pass into getTrails and getWeather functions */
@@ -44,17 +48,26 @@ function getTrails(latitude, longitude) {
  let trailUrl = `https://www.trailrunproject.com/data/get-trails?lat=${latitude}&lon=${longitude}&maxDistance=30&maxResults=20&key=${trailKey}`;
 
  fetch (trailUrl)
-    .then (trailResponse=>trailResponse.json())
-    .then(trailResponseJson=> {
+    .then (trailResponse=> {
+        if(trailResponse.ok) {
+        return trailResponse.json();
+        }
+        throw new error(trailResponse.statusText);
+    })
+    .then(trailResponseJson=> { 
         console.log(trailResponseJson);
         displayTrailResults(trailResponseJson)})
-    .catch (error=> console.log(error.message));
+    .catch (error=> {
+        console.log(error.message)
+        $('js-trail-results').text('Something went wrong. Please try again later.')
+    });
 
  console.log(latitude, longitude); 
 }
 
 /* display trail results in the DOM */
 function displayTrailResults(trailResponseJson) {
+    $('.search-form').find('p').empty();
     $('.js-trail-results').empty();
     $('.js-trail-results').append(trailResponseJson.trails.map(trail=> `<li><h3>${trail.name}</h3></li>
     <li><i>${trail.summary}</i></li>
@@ -68,18 +81,24 @@ function displayTrailResults(trailResponseJson) {
 function getWeather(latitude, longitude) {
     let weatherUrl =`https://weather.ls.hereapi.com/weather/1.0/report.json?apiKey=${weatherKey}&product=observation&product=forecast_7days_simple&latitude=${latitude}&longitude=${longitude}`;
     fetch(weatherUrl)
-    .then(weatherResponse=>weatherResponse.json())
+    .then(weatherResponse=> {
+        if (weatherResponse.ok) {
+       return weatherResponse.json();
+        }
+        throw new error(weatherRepsonse.statusText);
+    })
     .then(weatherResponse=> {
         console.log(weatherResponse);
         displayWeatherResults(weatherResponse);
     })
-    .catch(error=> console.log(error.message));
+    .catch(error=> $('.js-weather').text(`Something went wrong, please try again`));
 
 }
 /* displays weather results to the DOM */
 function displayWeatherResults(weather) {
     $('.js-weather').removeClass("hidden");
     $('.js-trail').removeClass("hidden");
+    $('.app-details').addClass("hidden");
     $('.js-weather-results').empty();
     $('.js-current-weather').empty();
     let currentWeather= weather.observations.location[0].observation[0];
@@ -107,6 +126,19 @@ function tempCalculator (num) {
 /* event listener for email signup form */
 function signUpListener() {
  console.log('sign up listener ran');
+ $('.signup-form').submit(event=> {
+    $('.email-message').empty();
+    let email="";
+    email =$('#email').val();
+    console.log(email);
+     if (/\S+@\S+\.\S+/.test(email)) {
+        $('.email-message').append(`Thanks, you're all signed up!`); 
+        $('.signup-form')[0].reset();
+     } else {
+         event.preventDefault();
+   $('.email-message').text(`Please provide a valid email address.`);
+            }
+    });
 }
 
 function activateListeners() {
