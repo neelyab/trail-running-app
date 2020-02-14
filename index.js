@@ -10,7 +10,18 @@ function searchListener(){
         let searchQuery = $('#search').val();
         console.log(searchQuery);
         formatQuery(searchQuery);
+        resetResults();
     });
+}
+
+function resetResults() {
+    $('.js-weather').removeClass("hidden");
+    $('.js-trail').removeClass("hidden");
+    $('.app-details').addClass("hidden");
+    $('.js-weather-results').empty();
+    $('.js-current-weather').empty();
+    $('.js-trail-results').empty();
+    $('.search-form').find('p').empty(); 
 }
 /* removes extra characters and formats search query */
 function formatQuery(searchQuery) {
@@ -59,7 +70,7 @@ function getTrails(latitude, longitude) {
         displayTrailResults(trailResponseJson)})
     .catch (error=> {
         console.log(error.message)
-        $('js-trail-results').text('Something went wrong. Please try again later.')
+        $('.js-trail-results').text('Something went wrong. Please try again later.')
     });
 
  console.log(latitude, longitude); 
@@ -67,8 +78,6 @@ function getTrails(latitude, longitude) {
 
 /* display trail results in the DOM */
 function displayTrailResults(trailResponseJson) {
-    $('.search-form').find('p').empty();
-    $('.js-trail-results').empty();
     $('.js-trail-results').append(trailResponseJson.trails.map(trail=> `<li><h3>${trail.name}</h3></li>
     <li><i>${trail.summary}</i></li>
     <li>Difficulty: ${trail.difficulty}</li>
@@ -92,17 +101,12 @@ function getWeather(latitude, longitude) {
         console.log(weatherResponse);
         displayWeatherResults(weatherResponse);
     })
-    .catch(error=> $('.js-weather').text(`Something went wrong, please try again`));
+    .catch(error=> $('.js-weather-results').text(`Something went wrong, please try again`));
 
 }
 /* displays weather results to the DOM */
 function displayWeatherResults(weather) {
-    $('.js-weather').removeClass("hidden");
-    $('.js-trail').removeClass("hidden");
-    $('.app-details').addClass("hidden");
-    $('.js-weather-results').empty();
-    $('.js-current-weather').empty();
-    let currentWeather= weather.observations.location[0].observation[0];
+let currentWeather= weather.observations.location[0].observation[0];
    let dailyForcasts = weather.dailyForecasts.forecastLocation.forecast;
    console.log(currentWeather);
    console.log(dailyForcasts);
