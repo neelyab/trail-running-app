@@ -78,6 +78,9 @@ function getTrails(latitude, longitude) {
 
 /* display trail results in the DOM */
 function displayTrailResults(trailResponseJson) {
+    if (trailResponseJson.trails.length === 0) {
+        $('.js-trail-results').text('No trails found. Please try a different address.')
+    } else {
     $('.js-trail-results').append(trailResponseJson.trails.map(trail=> `<li><h3>${trail.name}</h3></li>
     <li><i>${trail.summary}</i></li>
     <li>Difficulty: ${trail.difficulty}</li>
@@ -85,6 +88,7 @@ function displayTrailResults(trailResponseJson) {
     <li>Condition: ${trail.conditionStatus}</li>
     <li>Length: ${trail.length} miles </li>
     <li><a href="${trail.url}" target="_blank">More Details</a></li>`));
+    }
 }
 
 /* uses weather Here API to retrieve results for the weather of location */
