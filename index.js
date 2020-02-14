@@ -73,7 +73,8 @@ function displayTrailResults(trailResponseJson) {
     <li><i>${trail.summary}</i></li>
     <li>Difficulty: ${trail.difficulty}</li>
     <li>Location: ${trail.location}</li>
-    <li>Condition:${trail.conditionStatus}</li>
+    <li>Condition: ${trail.conditionStatus}</li>
+    <li>Length: ${trail.length} miles </li>
     <li><a href="${trail.url}" target="_blank">More Details</a></li>`));
 }
 
