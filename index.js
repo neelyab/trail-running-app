@@ -30,8 +30,29 @@ function geocodeAddress(address) {
 
 function getTrails(coordinates) {
  console.log(coordinates);
- let latLong = Object.keys(coordinates).map(key=>`${key}=${coordinates[key]}`)
- console.log(latLong); 
+ /* let latLong = Object.keys(coordinates).map(key=>`${key}=${coordinates[key]}`) */
+ let latitude= coordinates.lat;
+ let longitude= coordinates.lng;
+ let trailUrl = `https://www.trailrunproject.com/data/get-trails?lat=${latitude}&lon=${longitude}&maxDistance=30&maxResults=20&key=${trailKey}`;
+
+ fetch (trailUrl)
+    .then (trailResponse=>trailResponse.json())
+    .then(trailResponseJson=> {
+        console.log(trailResponseJson);
+        displayTrailResults(trailResponseJson)})
+    .catch (error=> console.log(error.message));
+
+ console.log(latitude, longitude); 
+}
+
+function displayTrailResults(trailResponseJson) {
+    $('.js-trail-results').empty();
+    $('.js-trail-results').append(trailResponseJson.trails.map(trail=> `<li><h3>${trail.name}</h3></li>
+    <li><i>${trail.summary}</i></li>
+    <li>Difficulty: ${trail.difficulty}</li>
+    <li>Location: ${trail.location}</li>
+    <li>Condition:${trail.conditionStatus}</li>
+    <li><a href="${trail.url}" target="_blank">More Details</a></li>`));
 }
 
 function getWeather() {
