@@ -93,8 +93,6 @@ main {
 }
 .js-weather {
     background-color: lightgray;
-    height: 350px;
-    overflow: scroll;
     margin-bottom: 20px;
 }
 .js-weather-results, .js-current-weather, .js-trail-results {

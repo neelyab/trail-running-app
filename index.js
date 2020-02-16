@@ -17,6 +17,7 @@ function searchListener(){
 }
 
 function resetResults() {
+    $('.results-container').removeClass("hidden");
     $('.js-weather').removeClass("hidden");
     $('.js-trail').removeClass("hidden");
     $('.app-details').addClass("hidden");
@@ -80,6 +81,7 @@ function getTrails(latitude, longitude, maxDistance) {
 
 /* display trail results in the DOM */
 function displayTrailResults(trailResponseJson) {
+    let result = trailResponseJson.trails.length;
     if (trailResponseJson.trails.length === 0) {
         $('.js-trail-results').text('No trails found. Please try a different address.')
     } else {
@@ -91,6 +93,7 @@ function displayTrailResults(trailResponseJson) {
     <li>Length: ${trail.length} miles </li>
     <li><a href="${trail.url}" target="_blank">More Details</a></li>`));
     }
+    $('.results').text(result);
 }
 
 /* uses weather Here API to retrieve results for the weather of location */
