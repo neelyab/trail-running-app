@@ -9,17 +9,32 @@ html {
     font-family: sans-serif;
     width: 100%;
     height: 100%;
+    background: url('img/mountain-trail.jpg') no-repeat center center fixed; 
+    background-color: darkgrey;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 a {
     text-decoration: none;
+    color: #F1F8F9;
 }
-button:hover {
+body{
+    color: #F1F8F9;
+    font-size: 16px;
+    font-family: 'Questrial', sans-serif;
+}
+#search-button:hover, #email-form-submit:hover {
     cursor: pointer;
+    background-color: #242e26;
+    border: 1px solid white;
+    color: #ffffff;
 }
 
 /* ------------ HEADER STYLES --------- */
 header {
-    background-color: lightgrey;
+    background-color: black;
 }
 nav {
     width: 100%;
@@ -47,7 +62,9 @@ body {
     height: 100%;
 }
 main {
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
 } 
 .app-details {
     display: flex;
@@ -55,12 +72,15 @@ main {
     align-items: center;
     margin: 0 auto;
     width: 100%;
-    max-width: 1200px;
-    padding: 50px 0;
+    padding: 50px 0 25px 0;
+    background: rgba(8, 8, 8, 0.45);
+    color: white;
+    
 }
+
 .app-details>p {
-    max-width: 500px;
-    font-size: 1.8em;
+    max-width: 550px;
+    font-size: 2em;
     padding: 10px 10px;
 }
 .search-form {
@@ -69,8 +89,16 @@ main {
     align-items: center;
     flex-direction: column;
     padding: 20x 0;
+    margin: 0 auto;
     margin-bottom: 100px;
     min-height: 300px;
+    font-size: 1.2em;
+    background: rgba(8, 8, 8, 0.45);
+    width: 100%;
+}
+
+.search-form>label {
+    padding: 10px 10px;
 }
 #city-state {
     padding-bottom: 10px;
@@ -84,41 +112,65 @@ main {
     border: 1px solid black;
     border-radius: 10px;
     margin-top: 10px;
+    margin-bottom: 10px;
+}
+#search-button {
+    width: 100px;
+}
+.email-message {
+    text-align: right;
 }
 /* -----  STYLES FOR TRAIL AND WEATHER RESULTS ---- */
 .js-trail {
-    background-color: lightgray;
+    background-color: white;
     height: 350px;
     overflow: scroll;
+    color: black;
+}
+.js-trail a {
+    color: #000012;
+    text-decoration: underline;
+}
+.js-trail p {
+    font-style: italic;
+    font-size: .9em;
 }
 .js-weather {
-    background-color: lightgray;
-    margin-bottom: 20px;
+    background-color: white;
+    margin-bottom: 50px;
+    color: black;
 }
-.js-weather-results, .js-current-weather, .js-trail-results {
+.js-weather-results, .js-current-weather, .js-trail-results, .js-trail {
     padding: 10px 20px;
     list-style: none;
+    color: black;
 }
-
+.js-trail-results h3 {
+    padding-top: 10px;
+}
 
 .hidden {
     display: none;
 }
-.js-weather-results li {
-    padding-bottom: 5px;
+.js-weather-results h3 {
+    padding-top: 10px;
 }
-.js-weather-results h2 {
-    padding: 10px 0 10px 0;
-}
+
 .js-weather h2 {
-    padding: 10px 0 10px 0;
+    padding: 10px 0 10px 0px;
 }
 .results-container {
     margin-bottom: 50px;
 }
+h2.weather {
+    padding-left: 10px;
+}
+.temp {
+    font-size: 2em;
+}
 /* --------- FOOTER STYLES ------- */
 footer {
-    background-color: darkgrey;
+    background-color: #000000;
     padding: 30px 0;
     margin-top: 40px;
 }
@@ -150,6 +202,7 @@ footer {
     display: flex;
     flex-direction: column;
     padding-left: 20px;
+    font-size: 1.2em;
 }
 #name, #email, #email-form-submit {
     width: 75%;
@@ -157,7 +210,13 @@ footer {
 
 
 @media only screen and (min-width: 968px) {
-
+.app-details {
+    margin-top: 200px;
+    width: 60%;
+}
+.search-form {
+    width: 60%;
+}
 .nav-items {
     margin-right: 100px;
     justify-content: space-around;
@@ -167,10 +226,6 @@ footer {
     flex-direction: row;
     margin: 0 auto;
     justify-content: center;
-}
-.results-container p {
-    display: block;
-    width: 100%;
 }
 .js-trail {
     width: 40%;

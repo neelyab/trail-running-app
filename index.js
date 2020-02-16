@@ -119,7 +119,7 @@ let currentWeather= weather.observations.location[0].observation[0];
    let dailyForcasts = weather.dailyForecasts.forecastLocation.forecast;
    console.log(currentWeather);
    console.log(dailyForcasts);
-   $('.js-current-weather').append(`<h2>Current Weather</h2><h3>Neighborhood: ${weather.observations.location[0].city}</h3>`).append(`<li><h3>${tempCalculator(currentWeather.temperature)}<span>&#8457;</span></h3>
+   $('.js-current-weather').append(`<h2>Current Weather</h2><h3>Neighborhood: ${weather.observations.location[0].city}</h3>`).append(`<li class="temp"><h3>${tempCalculator(currentWeather.temperature)}<span>&#8457;</span></h3>
    <li>${currentWeather.description}</li>
    <li>Humidity: ${currentWeather.humidity}%</li>
    `);
@@ -140,14 +140,14 @@ function tempCalculator (num) {
 /* event listener for email signup form */
 function signUpListener() {
  console.log('sign up listener ran');
- $('.signup-form').submit(event=> {
+ $('.signup-form').on('submit', event=> {
     $('.email-message').empty();
     let email="";
     email =$('#email').val();
     console.log(email);
      if (/\S+@\S+\.\S+/.test(email)) {
         $('.email-message').append(`Thanks, you're all signed up!`); 
-        $('.signup-form')[0].reset();
+        return false;
      } else {
          event.preventDefault();
    $('.email-message').text(`Please provide a valid email address.`);
