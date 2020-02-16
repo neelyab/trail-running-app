@@ -1,6 +1,7 @@
 const trailKey = "200684769-4f084c0cbb58312f47d7cfd6e89ac282";
 const weatherKey = "XGoPHLmsO_f_rZvqGnD0QBbGAAbVCCcRtNKhjJZKv5A";
 const geocodeKey = "AIzaSyDkSZLOdZd5QDjTrFXfRkJaj_drwGI2DNw";
+let maxDistance = 10;
 
 /* event listener for search submit */
 function searchListener(){
@@ -8,6 +9,7 @@ function searchListener(){
     $('.search-form').submit(event => {
         event.preventDefault();
         let searchQuery = $('#search').val();
+        maxDistance = $('#max-distance').val();
         console.log(searchQuery);
         formatQuery(searchQuery);
         resetResults();
@@ -48,15 +50,15 @@ function geocodeAddress(address) {
 function latLong(coordinates) {
     let latitude= coordinates.lat;
     let longitude= coordinates.lng;
-    getTrails(latitude, longitude);
+    getTrails(latitude, longitude, maxDistance);
     getWeather(latitude, longitude);
 }
 
 /* uses trail run project API to find trails nearby location */
-function getTrails(latitude, longitude) {
+function getTrails(latitude, longitude, maxDistance) {
  console.log(latitude, longitude);
 
- let trailUrl = `https://www.trailrunproject.com/data/get-trails?lat=${latitude}&lon=${longitude}&maxDistance=30&maxResults=20&key=${trailKey}`;
+ let trailUrl = `https://www.trailrunproject.com/data/get-trails?lat=${latitude}&lon=${longitude}&maxDistance=${maxDistance}&maxResults=200&key=${trailKey}`;
 
  fetch (trailUrl)
     .then (trailResponse=> {

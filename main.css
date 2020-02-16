@@ -88,15 +88,20 @@ main {
 /* -----  STYLES FOR TRAIL AND WEATHER RESULTS ---- */
 .js-trail {
     background-color: lightgray;
+    height: 350px;
+    overflow: scroll;
 }
 .js-weather {
-  
     background-color: lightgray;
+    height: 350px;
+    overflow: scroll;
+    margin-bottom: 20px;
 }
 .js-weather-results, .js-current-weather, .js-trail-results {
     padding: 10px 20px;
     list-style: none;
 }
+
 
 .hidden {
     display: none;

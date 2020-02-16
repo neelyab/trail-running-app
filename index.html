@@ -23,6 +23,16 @@
         <form class="search-form">
             <label for="search" id="city-state">Enter your full address, city/state, or zipcode:</label>
             <input type="text" id="search" placeholder="New York, New York">
+            <label for="max-distance">Search for trails within:</label>
+            <select id="max-distance">
+                <option value="10">10 miles</option>
+                <option value="25">25 miles</option>
+                <option value="50">50 miles</option>
+                <option value="75">75 miles</option>
+                <option value="100">100 miles</option>
+                <option value="200">200 miles</option>
+                <option value="300">300 miles</option>
+              </select>
             <button type="submit" id="search-button">Search</button>
         </form>
         <div class="results-container">
