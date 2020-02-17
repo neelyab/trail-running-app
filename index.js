@@ -10,9 +10,13 @@ function searchListener(){
         event.preventDefault();
         let searchQuery = $('#search').val();
         maxDistance = $('#max-distance').val();
+        if (searchQuery.length == 0) {
+            alert('Please enter an address.')
+        } else {
         console.log(searchQuery);
         formatQuery(searchQuery);
         resetResults();
+        }
     });
 }
 /* resets weather and trail results div, removes the hidden class */
