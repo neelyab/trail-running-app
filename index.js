@@ -6,7 +6,7 @@ let maxDistance = 10;
 /* event listener for search submit */
 function searchListener(){
  console.log('search listener ran');
-    $('.search-form').submit(event => {
+    $('.search-form').submit((event) => {
         event.preventDefault();
         let searchQuery = $('#search').val();
         maxDistance = $('#max-distance').val();
@@ -15,7 +15,7 @@ function searchListener(){
         resetResults();
     });
 }
-
+/* resets weather and trail results div, removes the hidden class */
 function resetResults() {
     $('.results-container').removeClass("hidden");
     $('.js-weather').removeClass("hidden");
@@ -38,13 +38,17 @@ function geocodeAddress(address) {
     let url=`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${geocodeKey}`;
 
  fetch(url)
-    .then (response=> {
+    .then ((response) => {
         if(response.ok) {
         return response.json();
         } throw new error(response.statusText);
         })
     .then (responseJson=>latLong(responseJson.results[0].geometry.location))
-    .catch (error => $('.search-form').append(`<p>something went wrong, please try again.</p>`));
+    .catch (error => {
+        $('.js-weather').addClass("hidden");
+        $('.js-trail').addClass("hidden");
+        $('.search-form').append(`<p>something went wrong, please try again.</p>`)
+    });
     
 }
 /* retrieves coordinates and assigns them to variables to pass into getTrails and getWeather functions */
@@ -62,16 +66,16 @@ function getTrails(latitude, longitude, maxDistance) {
  let trailUrl = `https://www.trailrunproject.com/data/get-trails?lat=${latitude}&lon=${longitude}&maxDistance=${maxDistance}&maxResults=200&key=${trailKey}`;
 
  fetch (trailUrl)
-    .then (trailResponse=> {
+    .then ((trailResponse) => {
         if(trailResponse.ok) {
         return trailResponse.json();
         }
         throw new error(trailResponse.statusText);
     })
-    .then(trailResponseJson=> { 
+    .then((trailResponseJson) => { 
         console.log(trailResponseJson);
         displayTrailResults(trailResponseJson)})
-    .catch (error=> {
+    .catch ((error)=> {
         console.log(error.message)
         $('.js-trail-results').text('Something went wrong. Please try again later.')
     });
@@ -100,13 +104,13 @@ function displayTrailResults(trailResponseJson) {
 function getWeather(latitude, longitude) {
     let weatherUrl =`https://weather.ls.hereapi.com/weather/1.0/report.json?apiKey=${weatherKey}&product=observation&product=forecast_7days_simple&latitude=${latitude}&longitude=${longitude}`;
     fetch(weatherUrl)
-    .then(weatherResponse=> {
+    .then((weatherResponse) => {
         if (weatherResponse.ok) {
        return weatherResponse.json();
         }
         throw new error(weatherRepsonse.statusText);
     })
-    .then(weatherResponse=> {
+    .then((weatherResponse) => {
         console.log(weatherResponse);
         displayWeatherResults(weatherResponse);
     })
@@ -140,7 +144,7 @@ function tempCalculator (num) {
 /* event listener for email signup form */
 function signUpListener() {
  console.log('sign up listener ran');
- $('.signup-form').on('submit', event=> {
+ $('.signup-form').on('submit', (event) => {
     $('.email-message').empty();
     let email="";
     email =$('#email').val();
