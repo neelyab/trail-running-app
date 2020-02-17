@@ -19,6 +19,7 @@
     </header>
     <main>
         <section class="app-details">
+            <h1>Trail Running Planner</h1>
             <p>The trail running planner helps you plan your runs easily. Get current and future weather 
             forcasts and find running trails near you. Simply enter your location to get started. </p>
             </section>
@@ -38,29 +39,16 @@
             <button type="submit" id="search-button">Search</button>
         </form>
         <div class="results-container hidden">
-            <section class="js-weather hidden"><h2 class="weather">Weather:</h2><ul class="js-current-weather"></ul><ul class="js-weather-results"></ul></section>
+            <section class="js-weather hidden"><h2 class="weather">Weather:</h2><div class="js-current-weather"></div><div class="js-weather-results"></div></section>
             <section class="js-trail hidden"> <h2>Trails Near You:</h2>
                 <p>Results:<span class="results"></span></p><ul class="js-trail-results"></ul></section>
         </div>
     </main>
     <footer>
-        <div class="footer-container">
         <section class="contact">
             <h2>Contact:</h2>
             <address class="email"><a href="mailto:neelyab@vcu.edu">neelyab@vcu.edu</a></address>
         </section>
-        <div class="form-container">
-        <form class="signup-form">
-            <h3>Sign up to get updates about the app!</h3>
-            <label for="name">Name:</label>
-            <input type="text" name="name" id="name" required>
-            <label for="email-address">Email Address:</label>
-            <input type="text" name="email-address" id="email" required>
-            <button type="submit" id="email-form-submit" onsubmit="return false;">Submit</button>
-        </form>
-        <section class="email-message"></section>
-        </div>
-        </div>
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="index.js"></script>   
