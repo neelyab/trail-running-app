@@ -85,6 +85,7 @@ function getTrails(latitude, longitude, maxDistance) {
 
 /* display trail results in the DOM */
 function displayTrailResults(trailResponseJson) {
+    $('.js-trail-results').empty();
     let result = trailResponseJson.trails.length;
     if (trailResponseJson.trails.length === 0) {
         $('.js-trail-results').text('No trails found. Please try a different address.');
