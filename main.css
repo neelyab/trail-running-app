@@ -214,11 +214,12 @@ footer {
     margin-left: 40px;
     height: 500px;
     overflow: scroll;
+    overflow-x: hidden;
 }
 .js-weather {
     width: 40%;
     height: 500px;
-    overflow: scroll;
+    overflow-x: hidden;
 }
 .footer-container {
     flex-direction: row;
